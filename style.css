@@ -130,8 +130,7 @@ header {
 .block {
     margin: 100px auto; 
     text-align: center;
-    width: 970px;
-    height: 176px;
+    max-width: 800;
     padding: 0 20px;
 }
 
