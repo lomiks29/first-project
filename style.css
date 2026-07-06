@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. ПОДКЛЮЧЕНИЕ ШРИФТОВ
+   1. щрифты
    ========================================================================== */
 @font-face {
     font-family: "Montserrat";
@@ -67,6 +67,10 @@ header {
     padding: 40px 20px;
 }
 
+.menu-toggle {
+    display: none; /* Скрываем кнопку меню на ПК */
+}
+
 .logo {
     width: 125px;
     height: auto;
@@ -130,7 +134,7 @@ header {
 .block {
     margin: 100px auto; 
     text-align: center;
-    max-width: 800px;
+    max-width: 800px; /* Ограничиваем ширину текста для лучшей читаемости */
     padding: 0 20px;
 }
 
@@ -162,16 +166,66 @@ header {
         padding-bottom: 40px;
     }
 
+    .logo {
+        width: 100px; 
+    }
+
+
     .container {
-        flex-direction: column; /* Элементы шапки встают друг под друга */
         gap: 20px;
         padding: 20px 10px;
+        display: flex;
+        position: relative; /* Чтобы меню могло позиционироваться относительно контейнера */
+    }
+
+    .menu-toggle {
+        display: block; /* Показываем кнопку меню на мобильных */
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-menu {
+        visibility: hidden; /* Скрываем меню по умолчанию */
+        opacity: 0; /* Делаем его невидимым */
+        transform: translateY(-10px); 
+        transition: opacity 0.3s ease, transform 0.3s ease; /* Плавное появление */
+        display: flex;
+
+
+        /* Делаем его выпадающим поверх остального контента */
+        position: absolute;
+        top: 100%; /* Появится ровно под шапкой */
+        background: rgba(0, 0, 0, 0.9); /* Полупрозрачный фон */
+        border-radius: 8px;
+        left: auto; 
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        z-index: 10; /* Чтобы меню было поверх всего остального */
+        width: 40%; /* Меню растягивается на всю ширину контейнера */
+
+    }
+
+    .nav-menu.active {
+        display: flex; /* Показываем меню при активном состоянии */
+        visibility: visible; /* Делаем его видимым */
+        opacity: 1; /* Делаем его полностью видимым */
+        transform: translateY(0); /* Возвращаем его на место */
     }
 
     .nav-menu ul {
         flex-direction: column; /* Ссылки меню встают в вертикальный список */
         gap: 15px;
         text-align: center;
+        Padding: 0; /* Убираем отступы слева */
+    }
+
+    .ticket {
+        max-width: 150px;
+        max-height: 50px;
     }
 
     .nav-menu a {
