@@ -57,192 +57,122 @@ header {
     flex-direction: column;
 }
 
+.menu-toggle {
+    display: none;
+}
+
 .container {
-    display: flex;
     width: 100%;
-    max-width: 1200px; /* Ограничиваем максимальную ширину контента */
-    margin: 0 auto;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 20px;
+    padding: 30px 200px;
 }
 
-.menu-toggle {
-    display: none; /* Скрываем кнопку меню на ПК */
-}
-
-.logo {
-    width: 125px;
-    height: auto;
-}
-
-
-/* Стили меню */
-.nav-menu ul {
-    padding-left: 200px;
+.nav-menu ul{
     display: flex;
+    align-items: center;
+    
+    gap: 30px;
+}
+
+.nav-menu li{
+    font-size: 18px;
+    font-weight: 500;
     gap: 40px;
 }
 
-.nav-menu a {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Расстояние между текстом ссылки и стрелочкой */
+.nav-menu a{
+    color: #fff;
     text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    transition: 0.3s;
+    transition:  0.3s;
+}
+
+.nav-menu a:hover{
+    background-color: #a51ddb;
+    border-radius: 16px;
     padding: 5px 10px;
-    border-radius: 4px;
 }
 
-.nav-menu a:hover {
-    background: #ffffff;
-    color: #381DDB;
-}
+.ticket{
+    background-color: #fff;
 
-.nav-menu img {
-    width: 10px;
-    height: 6px;
-}
-
-/* Кнопка билетов */
-.ticket {
-    width: 175px;
-    height: 56px;
-    background: white;
+    padding: 15px 20px;
     border-radius: 8px;
-    text-align: center;
+
     transition: 0.3s;
 }
 
-.ticket-text {
-    display: block;
-    text-decoration: none;
-    color: #381DDB;
+.ticket:hover{
+    background-color: #1dafdb;
+}
+
+.ticket-text{
     font-size: 18px;
     font-weight: 700;
-    line-height: 56px;
+    text-decoration: none;
+
+    color: #381DDB;
 }
 
-.ticket:hover {
-    background-color: aqua;
-}
-
-/* Главный текстовый блок по центру */
-.block {
-    margin: 100px auto; 
+.block{
+    max-width: 800px; /* Ваша максимальная ширина */
+    margin: 100px auto 0 auto; /* 100px сверху, auto справа, 0 снизу, auto слева */
     text-align: center;
-    max-width: 800px; /* Ограничиваем ширину текста для лучшей читаемости */
-    padding: 0 20px;
 }
 
-.block h1 {
-    font-size: 54px;
+.block h1{
+    font-size: 50px;
     font-weight: 700;
+
     margin-bottom: 20px;
-    line-height: 1.2;
 }
 
-.block p {
+.block p{
     font-size: 18px;
     font-weight: 500;
-    opacity: 0.8;
-    line-height: 1.6;
+    line-height: 1.5;
+    margin-bottom: 30px;
 }
 
-#Music {
-    color: #ffb199;
-    font-weight: 700;
+#Music{
+    color: #FFBE9D;
 }
 
-/* ==========================================================================
-   4. адапитация под мобильные устройства
-   ========================================================================== */
 @media (max-width: 768px) {
-    header {
-        min-height: 100vh; /* На мобилках занимает ровно высоту экрана */
-        padding-bottom: 40px;
-    }
-
-    .logo {
-        width: 100px; 
-    }
-
 
     .container {
-        gap: 20px;
-        padding: 20px 10px;
-        display: flex;
-        position: relative; /* Чтобы меню могло позиционироваться относительно контейнера */
+        padding: 30px 20px;
+        position: relative;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
     }
 
     .menu-toggle {
-        display: block; /* Показываем кнопку меню на мобильных */
-        background: none;
-        border: none;
-        color: white;
-        font-size: 24px;
+        display: block;
         cursor: pointer;
     }
 
     .nav-menu {
-        visibility: hidden; /* Скрываем меню по умолчанию */
-        opacity: 0; /* Делаем его невидимым */
-        transform: translateY(-10px); 
-        transition: opacity 0.3s ease, transform 0.3s ease; /* Плавное появление */
-        display: flex;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.2s linear;
+        transform: translateY(-10px);
 
-
-        /* Делаем его выпадающим поверх остального контента */
         position: absolute;
-        top: 100%; /* Появится ровно под шапкой */
-        background: rgba(0, 0, 0, 0.9); /* Полупрозрачный фон */
-        border-radius: 8px;
-        left: auto; 
-        flex-direction: column;
-        padding: 20px;
-        gap: 20px;
-        z-index: 10; /* Чтобы меню было поверх всего остального */
-        width: 40%; /* Меню растягивается на всю ширину контейнера */
-
+        top: 100%;
+        background-color: #000000e3;
+        padding: 10px 20px;
+        border-radius: 18px;
     }
 
     .nav-menu.active {
-        display: flex; /* Показываем меню при активном состоянии */
-        visibility: visible; /* Делаем его видимым */
-        opacity: 1; /* Делаем его полностью видимым */
-        transform: translateY(0); /* Возвращаем его на место */
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    .nav-menu ul {
-        flex-direction: column; /* Ссылки меню встают в вертикальный список */
-        gap: 15px;
-        text-align: center;
-        Padding: 0; /* Убираем отступы слева */
-    }
-
-    .ticket {
-        max-width: 150px;
-        max-height: 50px;
-    }
-
-    .nav-menu a {
-        font-size: 16px;
-        justify-content: center; /* Центрируем текст со стрелочками */
-    }
-
-    /* Адаптация главного текста */
-    .block {
-        margin: 40px auto; /* Смещаем чуть ближе к верху, убирая жесткое центрирование */
-    }
-
-    .block h1 {
-        font-size: 28px; /* Уменьшаем гигантский заголовок, чтобы он влез в экран смартфона */
-    }
-
-    .block p {
-        font-size: 14px; /* Обычный текст делаем более читабельным для мобильных */
-    }
+    
 }
